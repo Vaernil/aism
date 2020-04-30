@@ -25,6 +25,9 @@ komentarzy, a niektóre rzeczy nie działają.
 ## Do poczytania | Stuff to read
 https://wiki.archlinux.org/index.php/Python/Virtual_environment
 
+0.0.0.0 vs 127.0.0.1 vs localhost
+https://stackoverflow.com/questions/20778771/what-is-the-difference-between-0-0-0-0-127-0-0-1-and-localhost
+
 
 ## Inicjalizacja projektu (Linux)
 
