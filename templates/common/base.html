@@ -1,0 +1,95 @@
+{% load static %}
+
+<html lang="en">
+
+<head>
+	{% block title %}
+	<title>AISM - Agregator treści - Oskar Olejniczak</title>
+	{% endblock %}
+  <!-- TODO zalinkuj do strony na githubie -->
+	<link rel="canonical" href="">
+
+	{% include 'common/metadata.html' %}
+	{% include 'common/style.html' %}
+</head>
+
+
+  <!-- TODO dodaj do css'a -->
+<body>
+	<div class="center">
+		<table class="c2light" border="0" cellpadding="0" cellspacing="0" id="hnmain" width="90%">
+			<tr>
+			<td class="headertop">
+				<table border="0" cellpadding="0" cellspacing="0" style="padding:2px" width="100%">
+				<tr>
+					<td style="width:48px;padding-right:6px">
+					<a href="/">
+						<!-- border czy nie? -->
+						<img alt="ZPSB logo"
+							height="48" src="{% static '/img/zpsb.png' %}"
+							style="border:0px #2d2d2d solid;"
+							width="48">
+					</a>
+					</td>
+					<td style="line-height:12pt; height:10px;">
+					<span class="pagetop">
+						<h1 class="aism-name"><a href="/">AISM</a></h1>
+
+						<a href="{% url 'new' %}">nowe</a> |
+						<a href="{% url 'best' %}">najlepsze</a> |
+						<a href="{% url 'submit' %}">dodaj</a>
+					</span>
+					</td>
+					<td style="text-align:right;padding-right:4px;">
+					<span class="pagetop">
+					<!-- jeśli użytkownik jest zalogowany wyświetl link do profilu i
+					opcję wylogowania, jeśli nie opcję logowania -->
+						{% if user.is_authenticated %}
+							<a id='me'
+							href="{% url 'profile' user_id=user.id %}">{{ user.username }}</a>
+							({{ user.karma }})
+							| <a id='logout' href="{% url 'logout' %}">wyloguj się</a>
+						{% else %}
+						<!-- Podziel na osobne podstrony? -->
+							<a href="{% url 'login' %}">logowanie | rejestracja</a>
+						{% endif %}
+					</span>
+					</td>
+				</tr>
+				</table>
+			</td>
+			</tr>
+			{% block content_header %}
+			<tr id="pagespace" style="height:14px" title=""></tr>
+			{% endblock %}
+			<tr>
+			<td>
+				{% block content %}
+				{% endblock %}
+			</td>
+			</tr>
+			<tr>
+			<td>
+				<div style="height: 10px"></div>
+				<table cellpadding="1" cellspacing="0" width="100%"
+					class="headertop">
+				<tr>
+					<td></td>
+				</tr>
+				</table>
+				<br>
+				<div class="center">
+					<span class="yclinks">
+					<a href="https://github.com/Vaernil">Oskar Olejniczak</a> |
+					<a href="mailto:vaernil@gmail.com">Kontakt</a> |
+					</span><br><br>
+				</div>
+			</td>
+			</tr>
+		</table>
+	</div>
+</body>
+
+{% include 'common/scripts.html' %}
+
+</html>

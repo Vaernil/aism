@@ -1,0 +1,47 @@
+{% extends 'common/base.html' %}
+
+{% block content %}
+{% if errors %}
+Spróbuj ponownie<br><br>
+{% endif %}
+
+<form method="post" action={% url 'submit' %}><input type="hidden" name="fnid">
+	{% csrf_token %}
+	<table border="0">
+		<tr>
+			<td>tytuł</td>
+			<td><input type="text" name="title" value="" size="50" oninput="tlen(this)"
+					   onfocus="tlen(this)"><span style="margin-left:10px"></span></td>
+		</tr>
+		<tr>
+			<td>url</td>
+			<td><input type="text" name="url" value="" size="50"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><b>lub</b></td>
+		</tr>
+		<tr>
+			<td>tekst</td>
+			<td><textarea name="text" rows="4" cols="49"></textarea></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><input type="submit" value="dodaj"></td>
+		</tr>
+		<tr style="height:20px"></tr>
+		<tr>
+			<td></td>
+			<td>Zostaw url pusty aby dodać pytanie i rozpocząć dyskusję. Jeśli
+				nie ma url, tekst pojawi się na górze wątku.
+				<br><br>
+			</td>
+		</tr>
+	</table>
+</form>
+
+{% endblock %}
